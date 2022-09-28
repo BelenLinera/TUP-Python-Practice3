@@ -4,7 +4,7 @@ contribuyentes, por ejemplo, el Monotributista y el que es Empleado en relación
 de dependencia. Ambos están dentro del sistema pero pagan diferentes impuestos.
 
 El monotributista tiene que pagar en función de sus ingresos brutos anuales:
-    - Si son menores a $370.000, paga $2646,22 mensuales
+    - Si son menores a $370.000, paga $2646,22 mensuales(30833,33)
     - Si son menores a $550.000, paga $2958,95 mensuales
     - Si son menores a $770.000, paga $3382,62 mensuales
     - Si son mayores a $770.000, paga $3988,85 mensuales
@@ -35,12 +35,40 @@ Restricciones:
 import abc
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
+import re
 from typing import List
+
+
+class Contribuyente(ABC):
+    @abstractmethod
+    def calcular_sueldo(self):
+        pass
+@dataclass
+class Empleado(Contribuyente):
+    ingresos: float
+    def calcular_sueldo(self):
+        return (self.ingresos - (self.ingresos * 0.17))
+@dataclass
+
+class Monotributista(Contribuyente):
+    ingresos: float
+    def calcular_sueldo(self):
+        if self.ingresos * 12 < 370000:
+            return (self.ingresos - 2646.22)
+        elif 370000 < self.ingresos * 12 < 550000:
+            return (self.ingresos - 2958,95)
+        elif 550000 < self.ingresos * 12 < 770000:
+            return (self.ingresos - 3382.62)
+        elif self.ingresos * 12 > 770000:
+            return (self.ingresos - 3988.85)
+            
 
 
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
+    calcular_sueldos.append(contribuyentes)
+    
 
 
 # NO MODIFICAR - INICIO

@@ -2,8 +2,23 @@
 
 
 class Article:
-    """Re-Escribir el ejercicio anterior utilizando una property en vez de un
-    método de instancia.
+
+    def _init_(self, nombre: str, costo: float, descuento: float):
+        self.nombre = nombre
+        self.costo = costo
+        self.descuento = descuento
+
+    @property
+    def calcular_precio(self):
+        precio = round((self.costo + (self.costo * self.iva)) * self.descuento)
+
+        return precio
+
+    @classmethod
+    def actualizar_iva(self, ivaNuevo):
+        self.iva = ivaNuevo
+
+    """método de instancia.
 
     Restricciones:
         - Utilizar 3 variables de instancia

@@ -1,7 +1,22 @@
 """Variables de Clase y Métodos de Clase."""
-
-
 class Article:
+    iva = 0.21
+    def _init_(self, nombre: str, costo: float, descuento: float):
+        self.nombre = nombre
+        self.costo = costo
+        self.descuento = descuento
+
+    def calcular_precio(self):
+        precio = round((self.costo + (self.costo * self.iva)) * self.descuento)
+    
+        return precio
+
+    @classmethod
+    def actualizar_iva(self, ivaNuevo):
+        self.iva = ivaNuevo
+
+
+
     """Todos los artículos tienen un nombre y un costo, opcionalmente algunos
     tienen un porcentaje de descuento.
 
@@ -69,3 +84,5 @@ article = Article(costo=1, nombre="Auto")
 assert article.nombre == "Auto"
 assert article.calcular_precio() == 1.25
 # NO MODIFICAR - FIN
+
+

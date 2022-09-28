@@ -43,3 +43,18 @@ except TypeError:
 assert Circle(1).area() == 3.14
 assert Circle(1).perimetro() == 6.28
 # NO MODIFICAR - FIN
+
+
+class Circle:
+
+    def _init_(self, radio: float):
+        self.radio = radio
+
+    def calculos(self):
+        area = (pi * (self.radio ** 2))
+        perimetro = (pi * 2 * self.radio)
+        return print("El área es:", area,"y el perímetro es:", perimetro)
+
+circle = Circle(1)
+print(circle.radio)
+circle.calculos()
