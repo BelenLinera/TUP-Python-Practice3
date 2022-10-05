@@ -56,18 +56,21 @@ class Monotributista(Contribuyente):
         if self.ingresos * 12 < 370000:
             return (self.ingresos - 2646.22)
         elif 370000 < self.ingresos * 12 < 550000:
-            return (self.ingresos - 2958,95)
+            return (self.ingresos - 2958.95)
         elif 550000 < self.ingresos * 12 < 770000:
             return (self.ingresos - 3382.62)
         elif self.ingresos * 12 > 770000:
             return (self.ingresos - 3988.85)
             
 
-
 def calcular_sueldos(contribuyentes: List[Contribuyente]):
     """Data una lista de contribuyentes, devuelve una lista de los sueldos de
     cada uno."""
-    calcular_sueldos.append(contribuyentes)
+    sueldos=[]
+    for i in contribuyentes:
+        sueldo =i.calcular_sueldo()
+        sueldos.append(sueldo)
+    return(sueldos)
     
 
 
